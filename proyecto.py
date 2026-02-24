@@ -102,6 +102,39 @@ class Hotel:
             actual = actual.siguiente
 
         print("No existe un huesped con esa cedula.")
+    
+    #funcion insertar pila en huesped
+    def push(self, num):
+        nuevo = Huesped(num)
+        nuevo.siguiente = self.cabeza
+        self.superior = nuevo
+        self.num += 1
+
+    def pop(self):
+        if self.cabeza is None:
+            print("La pila esta vacia")
+            return
+        else:
+            dato = self.cabeza.num
+            self.cabeza = self.cabeza.siguiente
+            self.num -= 1
+            return dato
+        
+    def esta_vacia(self):
+        if self.cabeza is None:
+            return True
+        else:
+            return False
+    def contar_elementos(self):
+        cont=0
+        actual = self.cabeza
+        while actual is not None:
+            cont += 1
+            actual = actual.siguiente
+        return cont
+
+
+        
 
 
 # PROGRAMA PRINCIPAL
@@ -138,5 +171,7 @@ while True:
     elif opcion == 6:
         print("Saliendo del sistema...")
         break
+    elif opcion == 7:
+        print("Numero de elementos en la pila:", hotel.contar_elementos())
     else:
         print("Opcion invalida.")
